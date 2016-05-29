@@ -1,0 +1,16 @@
+{
+  "name": "mrsudo",
+  "description": "...",
+  "version": "1.0.0",
+  "author": "Henrik Lissner <hlissner@io>",
+  "license": "MIT",
+  "main": "app/app.js",
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-pug": "^3.0.2",
+    "gulp-sass": "^2.3.1",
+    "gulp-typescript": "^2.13.5"
+  }
+}
