@@ -2,8 +2,6 @@
   "name": "mrsudo",
   "description": "...",
   "version": "1.0.0",
-  "author": "Henrik Lissner <hlissner@io>",
-  "license": "MIT",
   "main": "app/app.js",
   "scripts": {},
   "dependencies": {},
