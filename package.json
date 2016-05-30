@@ -3,7 +3,9 @@
   "description": "...",
   "version": "1.0.0",
   "main": "app/app.js",
-  "scripts": {},
+  "scripts": {
+    "init": "typings install; npm install"
+  },
   "dependencies": {},
   "devDependencies": {
     "gulp": "^3.9.1",
