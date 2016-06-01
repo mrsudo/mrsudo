@@ -1,18 +1,13 @@
-var gulp = require('gulp');
+var gulp = require('gulp'),
+    pug  = require('gulp-pug'),
+    sass = require('gulp-sass'),
+    ts   = require('gulp-typescript');
 
 var appdir = "public/",
     srcdir = "src/";
 
-// Pug
-var pug = require('gulp-pug');
-
-// Sass
-var sass = require('gulp-sass');
-
 // Typescript
-var ts = require('gulp-typescript'),
-    tsProject = ts.createProject('tsconfig.json');
-
+var tsProject = ts.createProject('tsconfig.json');
 
 //
 gulp.task('build-css', () => {
@@ -36,7 +31,7 @@ gulp.task('build-pug', () => {
 gulp.task('watch', () => {
     // TODO livereloading plugin
     gulp.watch("src/**/*.ts", ['build-js']);
-    gulp.watch("src/**/*.pug", ['build-pug']);
+    gulp.watch("src/views/**/*.pug", ['build-pug']);
     gulp.watch("src/stylesheets/**/*.scss", ['build-css']);
 });
 
