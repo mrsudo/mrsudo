@@ -37,4 +37,4 @@ gulp.task('watch', () => {
 
 
 // Default task
-gulp.task('default', ['build-ts', 'build-css', 'build-pug']);
+gulp.task('default', ['build-js', 'build-css', 'build-pug']);
