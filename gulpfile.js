@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
     pug  = require('gulp-pug'),
     sass = require('gulp-sass'),
+    bourbon = require('node-bourbon').includePaths,
     ts   = require('gulp-typescript');
 
 var appdir = "public/",
@@ -12,7 +13,7 @@ var tsProject = ts.createProject('tsconfig.json');
 //
 gulp.task('build-css', () => {
     return gulp.src(srcdir + "/stylesheets/**.scss")
-        .pipe(sass().on('error', sass.logError))
+        .pipe(sass({includePaths: [].concat(bourbon), outputStyle: 'compressed'}).on('error', sass.logError))
         .pipe(gulp.dest(appdir + "/css"));
 });
 
