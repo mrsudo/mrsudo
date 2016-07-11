@@ -1,32 +1,52 @@
-var gulp = require('gulp'),
-    pug  = require('gulp-pug'),
-    sass = require('gulp-sass'),
-    bourbon = require('node-bourbon').includePaths,
-    ts   = require('gulp-typescript');
+const gulp    = require('gulp'),
+      pug     = require('gulp-pug'),
+      source  = require('vinyl-source-stream');
 
-var appdir = "public/",
-    srcdir = "src/";
+// sass
+const sass    = require('gulp-sass'),
+      bourbon = require('node-bourbon').includePaths;
 
-// Typescript
+// typescript
+const ts         = require('gulp-typescript'),
+      browserify = require('browserify'),
+      tsify      = require('tsify');
+
 var tsProject = ts.createProject('tsconfig.json');
 
 //
+const dir = {
+    build:  "public/",
+    source: "src/"
+};
+
+
+// Tasks
 gulp.task('build-css', () => {
-    return gulp.src(srcdir + "/stylesheets/**.scss")
+    return gulp.src(dir.source + "/stylesheets/**.scss")
         .pipe(sass({includePaths: [].concat(bourbon), outputStyle: 'compressed'}).on('error', sass.logError))
-        .pipe(gulp.dest(appdir + "/css"));
+        .pipe(gulp.dest(dir.build + "/css"));
 });
 
 gulp.task('build-js', () => {
-    return gulp.src(srcdir + "/**/*.ts")
+    return gulp.src(dir.source + "/**/*.ts")
         .pipe(ts(tsProject))
-        .pipe(gulp.dest(appdir + "/app"));
+        .pipe(gulp.dest(dir.build + "/app"));
 });
 
 gulp.task('build-pug', () => {
-    return gulp.src(srcdir + "/views/**/*.pug")
+    return gulp.src(dir.source + "/views/**/*.pug")
         .pipe(pug())
-        .pipe(gulp.dest(appdir + "/views"));
+        .pipe(gulp.dest(dir.build + "/views"));
+});
+
+gulp.task('bundle-js', () => {
+    return browserify({basedir: dir.source})
+        .add("app.ts")
+        .plugin(tsify)
+        .bundle()
+        .on('error', (err) => { console.error(err.toString()); })
+        .pipe(source("app.js"))
+        .pipe(gulp.dest(dir.build + "/app"));
 });
 
 gulp.task('watch', () => {
