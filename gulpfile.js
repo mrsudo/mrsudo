@@ -17,14 +17,20 @@ var tsProject = ts.createProject('tsconfig.json');
 //
 const dir = {
     build:  "public/",
-    source: "src/"
+    source: "src/",
+    node:   "node_modules/"
 };
 
 
 // Tasks
 gulp.task('build-css', () => {
+    gulp.src(dir.node + "normalize.css/normalize.css")
+        .pipe(gulp.dest(dir.build + "/css"));
     return gulp.src(dir.source + "/stylesheets/**.scss")
-        .pipe(sass({includePaths: [].concat(bourbon), outputStyle: 'compressed'}).on('error', sass.logError))
+        .pipe(
+            sass({includePaths: bourbon, outputStyle: 'compressed', sourcemap:true})
+                .on('error', sass.logError)
+        )
         .pipe(gulp.dest(dir.build + "/css"));
 });
 
