@@ -1,9 +1,9 @@
 .DS_Store
 .idea
-
 .tern-port
 .sass-cache
 *.css
 *.js
 node_modules/
 typings/
+public/
