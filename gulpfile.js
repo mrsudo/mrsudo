@@ -1,4 +1,5 @@
 const gulp    = require('gulp'),
+      gulpif  = require('gulp-if'),
       pug     = require('gulp-pug'),
       source  = require('vinyl-source-stream');
 
@@ -36,7 +37,9 @@ gulp.task('build-js', () => {
 gulp.task('build-pug', () => {
     return gulp.src(dir.source + "/views/**/*.pug")
         .pipe(pug())
-        .pipe(gulp.dest(dir.build + "/views"));
+        .pipe(gulpif((file) => file.path.match(/\/index.html$/),
+                     gulp.dest(dir.build),
+                     gulp.dest(dir.build + "/views")));
 });
 
 gulp.task('bundle-js', () => {
