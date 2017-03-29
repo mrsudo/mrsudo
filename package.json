@@ -7,6 +7,8 @@
     "postinstall": "npm run clean",
     "test": "faucet",
     "clean": "rm -rf public/* && mkdir -p public/{css,js,images}",
+    "lint:css": "stylelint src/stylesheets/**/*.scss; exit 0",
+    "lint:js": "eslint src/**/*.js",
     "build:js": "browserify src/main.js -o public/js/main.js",
     "build:css": "node-sass src/stylesheets/app.scss -o public/css/",
     "build:html": "cp -f src/index.html public/index.html",
@@ -24,9 +26,14 @@
     "babel-preset-react": "^6.23.0",
     "babelify": "^7.3.0",
     "browserify": "^14.1.0",
+    "eslint": "^3.18.0",
+    "eslint-plugin-react": "^6.10.3",
     "faucet": "0.0.1",
     "node-sass": "^4.5.1",
     "parallelshell": "^2.0.0",
+    "stylelint": "^7.9.0",
+    "stylelint-config-standard": "^16.0.0",
+    "stylelint-scss": "^1.4.3",
     "tape": "^4.6.3",
     "watchify": "^3.9.0"
   },
@@ -41,6 +48,16 @@
       "ecmaFeatures": {
         "jsx": true
       }
+    }
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard",
+    "plugins": [
+      "stylelint-scss"
+    ],
+    "rules": {
+      "rule-empty-line-before": null,
+      "selector-list-comma-newline-after": null
     }
   },
   "browserify": {
