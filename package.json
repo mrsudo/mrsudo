@@ -45,6 +45,7 @@
       "node": true
     },
     "parserOptions": {
+      "sourceType": "module",
       "ecmaFeatures": {
         "jsx": true
       }
@@ -65,10 +66,7 @@
       [
         "babelify",
         {
-          "presets": [
-            "es2015",
-            "react"
-          ]
+          "presets": ["es2015", "react"]
         }
       ]
     ]
