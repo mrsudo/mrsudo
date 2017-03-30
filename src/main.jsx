@@ -1,3 +1,3 @@
-const Desktop = require("./components/desktop");
+import Desktop from './components/Desktop';
 
 ReactDOM.render(<Desktop />, document.getElementById("app"));
