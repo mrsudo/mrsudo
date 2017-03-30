@@ -4,18 +4,18 @@
   "version": "1.0.0",
   "main": "app/app.js",
   "scripts": {
-    "postinstall": "npm run clean",
+    "postinstall": "npm run clean -s",
     "test": "faucet",
     "clean": "rm -rf public/* && mkdir -p public/{css,js,images}",
     "lint:css": "stylelint src/stylesheets/**/*.scss; exit 0",
     "lint:js": "eslint src/**/*.js",
-    "build:js": "browserify src/main.js -o public/js/main.js",
+    "build:js": "browserify src/main.jsx --extension=.jsx -o public/js/main.js",
     "build:css": "node-sass src/stylesheets/app.scss -o public/css/",
     "build:html": "cp -f src/index.html public/index.html",
-    "build": "parallelshell 'npm run build:js' 'npm run build:css' 'npm run build:html'",
-    "watch:js": "watchify src/main.js -o public/js/main.js -v",
+    "build": "parallelshell 'npm run build:js -s' 'npm run build:css -s' 'npm run build:html -s'",
+    "watch:js": "watchify src/main.jsx --extension=.jsx -o public/js/main.js -v",
     "watch:css": "node-sass -r --watch --source-map true --output public/css/ --output-style compressed src/stylesheets/",
-    "watch": "parallelshell 'npm run watch:js' 'npm run watch:css'"
+    "watch": "parallelshell 'npm run watch:js -s' 'npm run watch:css -s'"
   },
   "dependencies": {
     "react": "^15.4.2",
