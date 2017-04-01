@@ -1,19 +1,36 @@
-html { background: #222; }
-
-html, body {
+@mixin reset() {
   margin: 0;
-  color: #eee;
+  padding: 0;
 }
+
+//
+html, body, #app, .session {
+  @include reset;
+  height: 100%;
+}
+
+html { background: #111; }
+html, body { color: #eee; }
 
 body {
   font-size: 14px;
   font-family: monospace;
 }
 
-.window {
-  border: 1px solid #000;
-  margin: 1em;
+a, a:link { color: orange; }
+a:hover { color: white; }
 
+.session > header {
+  padding: 7px 10px;
+  text-align: right;
+  nav {
+    float: left;
+    a { margin-right: 10px; }
+    a::before { content: ">"; }
+  }
+}
+
+.window {
   .titlebar {
     background-color: #333;
 
@@ -26,4 +43,28 @@ body {
       button { font-size: 60%; }
     }
   }
+}
+
+.window.home {
+  pre {
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    text-align: center;
+    color: green;
+    font-weight: bold;
+  }
+}
+
+// .window.popups {}
+
+.popup {
+  position: fixed;
+  top: 2em;
+  right: 2em;
+  width: 20em;
+  background: #141414;
+  padding: 1em;
+
+  h3 { @include reset; }
 }
