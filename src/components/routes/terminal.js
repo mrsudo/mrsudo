@@ -4,9 +4,7 @@ import BaseWindow from '../BaseWindow';
 export default class TerminalPage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            bufferList: []
-        };
+        this.state = { bufferList: [] };
     }
 
     addLine() {
@@ -16,7 +14,8 @@ export default class TerminalPage extends React.Component {
     render() {
         return (
             <BaseWindow title="terminal">
-                // <TerminalBuffer />
+                <pre className="buffer">{this.state.bufferList.join("\n")}</pre>
+                <div className="prompt">$ <input type="text" /></div>
             </BaseWindow>
         );
     }
