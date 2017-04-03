@@ -32,8 +32,10 @@
     "react-router-dom": "^4.0.0"
   },
   "devDependencies": {
+    "babel-eslint": "^7.2.1",
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-react": "^6.23.0",
+    "babel-preset-stage-0": "^6.22.0",
     "babelify": "^7.3.0",
     "browser-sync": "^2.18.8",
     "browserify": "^14.1.0",
@@ -49,6 +51,7 @@
     "watchify": "^3.9.0"
   },
   "eslintConfig": {
+    "parser": "babel-eslint",
     "env": {
       "es6": true,
       "browser": true,
@@ -78,7 +81,11 @@
       [
         "babelify",
         {
-          "presets": ["es2015", "react"]
+          "presets": [
+            "es2015",
+            "react",
+            "stage-0"
+          ]
         }
       ]
     ]
