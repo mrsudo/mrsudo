@@ -16,8 +16,8 @@
     "lint:css": "stylelint src/stylesheets/**/*.scss; exit 0",
     "lint:js": "eslint src/**/*.js",
     "lint": "npm-run-all lint:*",
-    "build:js": "browserify src/main.jsx --extension=.jsx -o public/js/main.js",
-    "build:css": "node-sass src/stylesheets/app.scss -o public/css/",
+    "build:js": "NODE_ENV=production browserify src/main.jsx --extension=.jsx -o public/js/main.js",
+    "build:css": "node-sass --output-style compressed src/stylesheets/app.scss -o public/css/",
     "build:html": "cp -f src/static/index.html public/index.html",
     "build": "npm-run-all build:*",
     "watch:js": "watchify src/main.jsx --extension=.jsx -o public/js/main.js -v",
@@ -48,6 +48,7 @@
     "stylelint-config-standard": "^16.0.0",
     "stylelint-scss": "^1.4.3",
     "tape": "^4.6.3",
+    "uglifyify": "^3.0.4",
     "watchify": "^3.9.0"
   },
   "eslintConfig": {
