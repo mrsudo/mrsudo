@@ -1,10 +1,10 @@
-import { Component } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 import HomePage from './routes/home';
 import TerminalPage from './routes/terminal';
 
-export default class Session extends Component {
+export default class Session extends React.Component {
     render() {
         return (
             <Router>
