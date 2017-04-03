@@ -18,8 +18,7 @@
     "watch:js": "watchify src/main.jsx --extension=.jsx -o public/js/main.js -v",
     "watch:css": "node-sass -r --watch --source-map true --output public/css/ --output-style compressed src/stylesheets/",
     "watch": "parallelshell 'npm run watch:js -s' 'npm run watch:css -s'",
-    "serve": "http-server -p 9090 public/",
-    "livereload": "live-reload --port 9091 public/"
+    "start": "browser-sync start -s public/ -f public/"
   },
   "dependencies": {
     "react": "^15.4.2",
@@ -29,13 +28,12 @@
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-react": "^6.23.0",
     "babelify": "^7.3.0",
+    "browser-sync": "^2.18.8",
     "browserify": "^14.1.0",
     "eslint": "^3.18.0",
     "eslint-plugin-react": "^6.10.3",
     "faucet": "0.0.1",
-    "http-server": "^0.9.0",
-    "live-reload": "^1.1.0",
-    "node-sass": "^4.5.1",
+    "node-sass": "^4.5.2",
     "parallelshell": "^2.0.0",
     "react-router": "^4.0.0",
     "react-router-dom": "^4.0.0",
