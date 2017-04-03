@@ -2,7 +2,13 @@
   "name": "mrsudo",
   "description": "...",
   "version": "1.0.0",
-  "main": "app/app.js",
+  "main": "src/main.jsx",
+  "license": "Apache",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrsudo/mrsudo"
+  },
   "scripts": {
     "postinstall": "npm run clean",
     "test": "faucet",
