@@ -1,10 +1,10 @@
-import React from 'react';
+import { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 import HomePage from './routes/home';
 import TerminalPage from './routes/terminal';
 
-export default class Session extends React.Component {
+export default class Session extends Component {
     render() {
         return (
             <Router>
@@ -18,8 +18,8 @@ export default class Session extends React.Component {
                     </header>
 
                     <Switch>
-                        <Route exact path="/" component={HomePage} />
-                        <Route path="/term" component={TerminalPage} />
+                        <Route exact path="/"     component={HomePage} />
+                        <Route       path="/term" component={TerminalPage} />
                     </Switch>
                 </div>
             </Router>
