@@ -4,18 +4,27 @@ import BaseWindow from '../BaseWindow';
 export default class TerminalPage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { bufferList: [] };
+        this.state = { bufferList: [], command: [] };
     }
 
-    addLine() {
+    execute = (e) => {
+        console.log(`Executing: ${this.input.value}`);
+        this.setState({bufferList: this.state.bufferList.concat([this.input.value])});
+        this.input.value = "";
+        e.preventDefault();
+    }
 
+    autocomplete = (e) => {
+        console.log(`Autocomplete: ${e.target.value}`);
     }
 
     render() {
         return (
             <BaseWindow title="terminal">
                 <pre className="buffer">{this.state.bufferList.join("\n")}</pre>
-                <div className="prompt">$ <input type="text" /></div>
+                <form className="prompt" onSubmit={this.execute}>
+                    $ <input type="text" ref={input => this.input = input} onChange={this.autocomplete} />
+                </form>
             </BaseWindow>
         );
     }
