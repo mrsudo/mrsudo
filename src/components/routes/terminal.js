@@ -23,7 +23,7 @@ export default class TerminalPage extends React.Component {
             <BaseWindow title="terminal">
                 <pre className="buffer">{this.state.bufferList.join("\n")}</pre>
                 <form className="prompt" onSubmit={this.execute}>
-                    $ <input type="text" ref={input => this.input = input} onChange={this.autocomplete} />
+                    $ <input autoFocus type="text" ref={input => this.input = input} onChange={this.autocomplete} />
                 </form>
             </BaseWindow>
         );

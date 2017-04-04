@@ -68,3 +68,26 @@ a:hover { color: white; }
 
   h3 { @include reset; }
 }
+
+.window.terminal {
+  .buffer {
+    margin-bottom: 0;
+  }
+
+  .prompt {
+    @include reset;
+    background: #222;
+    width: 100%;
+    padding-top: 2px;
+    color: #999;
+
+    input {
+      font-family: monospace;
+      background: none;
+      border: none;
+      width: 90%;
+      padding: 2px 0;
+      color: #FFF;
+    }
+  }
+}
