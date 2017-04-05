@@ -1,5 +1,6 @@
 import React from 'react';
 import BaseWindow from '../BaseWindow';
+import io from 'socket.io-client';
 
 export default class TerminalPage extends React.Component {
     constructor(props) {
@@ -7,9 +8,17 @@ export default class TerminalPage extends React.Component {
         this.state = { bufferList: [], command: [] };
     }
 
+    componentDidMount() {
+        this.socket = io.connect('http://localhost:3000');
+        this.socket.on('stdout', (message) => {
+            this.setState({bufferList: this.state.bufferList.concat([message])});
+        });
+    }
+
     execute = (e) => {
         console.log(`Executing: ${this.input.value}`);
-        this.setState({bufferList: this.state.bufferList.concat([this.input.value])});
+        this.setState({bufferList: this.state.bufferList.concat(["$ " + this.input.value])});
+        this.socket.emit('execute', { command: this.input.value });
         this.input.value = "";
         e.preventDefault();
     }
