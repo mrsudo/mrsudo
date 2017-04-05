@@ -11,7 +11,12 @@ export default class TerminalPage extends React.Component {
     componentDidMount() {
         this.socket = io.connect('http://localhost:3000');
         this.socket.on('stdout', (message) => {
+            if (!message || message.length === 0) message = "\n";
             this.setState({bufferList: this.state.bufferList.concat([message])});
+        });
+        this.socket.on('stderr', (message) => {
+            if (!message || message.length === 0) message = "\n";
+            this.setState({bufferList: this.state.bufferList.concat(["ERROR: " + message])});
         });
     }
 
